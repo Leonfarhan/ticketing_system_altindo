@@ -20,7 +20,7 @@
 
 ## Struktur Proyek
 
-Proyek ini dibagi menjadi direktori frontend dan backend:
+Proyek ini dibagi menjadi direktori frontend(src) dan backend:
 
 ```plaintext
 .
