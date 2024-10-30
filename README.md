@@ -82,12 +82,12 @@ Proyek ini dibagi menjadi direktori frontend dan backend:
 ### Menjalankan Aplikasi
 Untuk frontend langsung 
 ```bash
-concurrently "npm run dev"
+"npm run dev"
 ```
 
 Untuk backned perlu masuk ke direktori backend kemudian 
 ```bash
-concurrently "npm start"
+"npm start"
 ```
 
 ## Endpoint API
