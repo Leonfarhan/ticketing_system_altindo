@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "backend/contexts", "backend/server"]
+  "include": ["src", "src/contexts", "backend/server"]
 }
