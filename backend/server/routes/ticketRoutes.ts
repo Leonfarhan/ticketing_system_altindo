@@ -6,6 +6,7 @@ import {
   updateTicket,
   respondToTicket,
   deleteTicket,
+  getMyTickets
 } from '../controllers/ticketController';
 import { auth, isAdmin } from '../middleware/auth';
 
@@ -17,5 +18,6 @@ router.get('/:id', auth, getTicket);
 router.put('/:id', auth, updateTicket);
 router.post('/:id/response', auth, isAdmin, respondToTicket);
 router.delete('/:id', auth, isAdmin, deleteTicket);
+router.get('/me', auth, getMyTickets);
 
 export default router;

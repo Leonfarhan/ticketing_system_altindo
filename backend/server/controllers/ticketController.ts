@@ -81,6 +81,20 @@ export const getTicket = async (req: AuthRequest, res: Response, next: NextFunct
   }
 };
 
+export const getMyTickets = async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const clientId = req.user!.id;
+
+    const query = 'SELECT * FROM tickets WHERE client_id = $1';
+    const values = [clientId];
+    const result = await pool.query(query, values);
+    res.json(result.rows);
+  } catch (error: any) {
+    next(new HttpError('Failed to fetch tickets: ' + error.message, 500));
+  }
+}
+
+
 export const updateTicket = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     const ticketId = parseInt(req.params.id, 10);
