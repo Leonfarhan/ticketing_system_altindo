@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth } from "../../../backend/contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { Search, Filter } from "lucide-react";
 import TicketList from "../tickets/TicketList";
 import Header from "../layout/Header";

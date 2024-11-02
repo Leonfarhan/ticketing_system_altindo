@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth } from "../../../backend/contexts/AuthContext";
-import { Plus, MessageSquare } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
+import { Plus } from "lucide-react";
 import TicketModal from "../tickets/TicketModal";
 import TicketList from "../tickets/TicketList";
 import Header from "../layout/Header";
