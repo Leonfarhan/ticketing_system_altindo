@@ -1,4 +1,3 @@
-// auth.ts
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -16,7 +15,7 @@ export class HttpError extends Error {
   constructor(message: string, status: number) {
     super(message);
     this.status = status;
-    this.name = 'HttpError'; // Set the name for better error handling
+    this.name = 'HttpError';
   }
 }
 

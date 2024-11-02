@@ -1,6 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../backend/contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { LogOut, User } from "lucide-react";
 
 const Header = () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns';
 import { CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import TicketItem from './TicketItem';
 
