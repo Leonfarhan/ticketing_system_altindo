@@ -1,6 +1,5 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "../backend/contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/auth/PrivateRoute";
