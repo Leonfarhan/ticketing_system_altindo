@@ -25,7 +25,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 initDatabase().then(() => {
   app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on port http://localhost:${port}`);
   });
 }).catch(error => {
   console.error('Failed to initialize database:', error);
