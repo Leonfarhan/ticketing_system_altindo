@@ -1,109 +1,158 @@
-# Full-Stack Ticket System
+# Full-Stack Ticketing System
 
-Sistem tiket ini adalah aplikasi full-stack yang memungkinkan pengguna untuk mengajukan tiket dukungan dan administrator untuk mengelola serta meresponnya. Aplikasi ini menggunakan arsitektur modern yang terbagi antara frontend (React dengan TypeScript) dan backend (Node.js dengan Express.js dan TypeORM).
+Sistem tiket full-stack yang memungkinkan pengguna untuk mengajukan tiket dukungan dan administrator untuk mengelola serta meresponnya. Dibangun dengan arsitektur modern yang terbagi antara frontend (React TypeScript) dan backend (Node.js Express.js dengan TypeORM).
 
 ## Tech Stack
 
-### Frontend (React dengan TypeScript)
+### Frontend
+- **Utama**
+   - React 18+ dengan TypeScript
+   - React Router v6+
+   - React Context API
+   - Tailwind CSS
+- **Library**
+   - Lucide React (Ikon)
+   - Axios (Klien HTTP)
+   - Zod (Validasi Data)
+   - Date-fns (Manipulasi Tanggal)
 
-- **React 18+ dengan TypeScript:** Menyediakan pengetikan statis dan meningkatkan pemeliharaan kode.
-- **React Router v6+:** Memungkinkan navigasi klien yang mudah dan efisien antara halaman.
-- **React Context API:** Digunakan untuk manajemen state aplikasi, seperti status autentikasi pengguna.
-- **Tailwind CSS:** Framework CSS berbasis utilitas yang mempercepat pengembangan UI.
-- **Lucide React:** Library ikon yang memberikan ikon yang konsisten dan modern.
-- **Axios:** Library untuk membuat permintaan HTTP ke server backend.
-- **Zod:** Library untuk validasi data yang kuat dan tertipe.
-- **Date-fns:** Library untuk pemformatan dan manipulasi tanggal.
-
-### Backend (Node.js dengan Express.js dan TypeORM)
-
-- **Node.js 16+ dengan Express.js:** Kerangka kerja web Node.js untuk membangun API RESTful.
-- **TypeORM:** Object-Relational Mapper (ORM) untuk berinteraksi dengan database PostgreSQL.
-- **PostgreSQL:** Sistem manajemen basis data relasional yang handal dan skalabel.
-- **bcrypt.js:** Library untuk hashing kata sandi secara aman.
-- **jsonwebtoken:** Library untuk pembuatan dan verifikasi JSON Web Tokens (JWT) untuk autentikasi.
-- **TypeScript:** Menyediakan pengetikan statis dan meningkatkan kualitas kode di sisi server.
-- **cors:** Middleware untuk menangani request cross-origin.
-- **dotenv:** Library untuk memuat variabel lingkungan dari file `.env`.
+### Backend
+- **Utama**
+   - Node.js 18+ dengan Express.js
+   - TypeORM
+   - PostgreSQL
+   - TypeScript
+- **Keamanan & Utilitas**
+   - bcrypt (Enkripsi Password)
+   - jsonwebtoken (Autentikasi JWT)
+   - Helmet (Header Keamanan)
+   - cors (Penanganan CORS)
+   - dotenv (Variabel Lingkungan)
+   - body-parser (Parsing Request)
+   - class-transformer & class-validator (Validasi Data)
+   - reflect-metadata (Dependensi TypeORM)
 
 ## Struktur Proyek
 
-Proyek ini diorganisir menjadi dua bagian utama: frontend(src) dan backend(backend).
-
 ```
 .
-├── README.md              # Dokumentasi proyek
-├── package.json           # Dependensi frontend
-├── package-lock.json      # Lockfile frontend
-├── tsconfig.json          # Konfigurasi TypeScript utama
-├── vite.config.ts         # Konfigurasi Vite untuk frontend
-├── tailwind.config.js      # Konfigurasi Tailwind CSS
-├── backend/               # Direktori untuk kode backend
-│   ├── package.json       # Dependensi backend
-│   ├── package-lock.json   # Lockfile backend
-│   ├── tsconfig.json      # Konfigurasi TypeScript backend
-│   └── server/            # Kode server utama
-│       ├── config/        # Konfigurasi server
-│       │   └── database.ts # Koneksi database
-│       ├── controllers/   # Logika kontroler API
-│       ├── middleware/     # Middleware untuk autentikasi
-│       ├── routes/        # Rute API
-│       └── index.ts       # Titik masuk server
-└── src/                   # Direktori frontend
-    ├── App.tsx           # Komponen aplikasi utama
-    ├── main.tsx          # Titik masuk aplikasi frontend
-    ├── components/        # Komponen frontend utama
-    │   ├── auth/         # Komponen autentikasi (Login, dsb.)
-    │   ├── dashboard/     # Komponen dasbor
-    │   └── tickets/      # Komponen terkait tiket
-    └── ...               # File-file lainnya
+├── backend/
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── server/
+│       ├── config/
+│       │   └── database.ts
+│       ├── controllers/
+│       │   ├── ticketController.ts
+│       │   └── userController.ts
+│       ├── middleware/
+│       │   └── auth.ts
+│       ├── routes/
+│       │   ├── ticketRoutes.ts
+│       │   └── userRoutes.ts
+│       └── index.ts
+├── src/
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── contexts/
+│   │   └── AuthContext.tsx
+│   ├── components/
+│   │   ├── auth/
+│   │   │   ├── Login.tsx
+│   │   │   ├── AdminRoute.tsx
+│   │   │   └── PrivateRoute.tsx
+│   │   ├── dashboard/
+│   │   │   ├── Dashboard.tsx
+│   │   │   └── AdminDashboard.tsx
+│   │   ├── layout/
+│   │   │   └── Header.tsx
+│   │   ├── tickets/
+│   │   │   ├── TicketList.tsx
+│   │   │   ├── TicketItem.tsx
+│   │   │   ├── TicketModal.tsx
+│   │   │   └── TicketResponseModal.tsx
+│   │   └── ui/
+│   │       └── Toaster.tsx
+│   ├── index.css
+│   └── vite-env.d.ts
+├── konfigurasi/
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
 ```
 
-## Persiapan
+## Prasyarat
+- Node.js v18+ (disarankan versi LTS)
+- npm/yarn/pnpm
+- PostgreSQL
 
-Pastikan Anda telah menginstal:
+## Instalasi & Pengaturan
+1. **Clone repositori**
+   ```bash
+   git clone https://github.com/Leonfarhan/ticketing_system_altindo.git
+   ```
 
-- Node.js (v16 atau lebih tinggi)
-- npm atau yarn
-- PostgreSQL (dan pastikan server berjalan)
-
-## Instalasi dan Pengaturan
-
-1. **Clone Repositori:** Clone repositori proyek ke komputer lokal Anda.
-2. **Buat file `.env`:** Buat file `.env` di direktori `./backend/` dengan kredensial database dan JWT secret:
-
+2. **Pengaturan Environment**
+   Buat file `.env` di folder `./backend/`:
    ```env
    DB_HOST=localhost
    DB_PORT=5432
    DB_USER=postgres
-   DB_PASSWORD=password_postgres_anda
+   DB_PASSWORD=<password_postgres_anda>
    DB_NAME=ticketing_system
-   JWT_SECRET=jwt_secret_anda 
+   JWT_SECRET=<secret_jwt_anda>
    PORT=3000
    ```
 
-3. **Instal Dependensi:**
-   - Masuk ke direktori backend: `npm install`
-   - Masuk ke direktori root: `npm install`
+3. **Instalasi Dependensi**
+   ```bash
+   # Instalasi dependensi backend
+   cd backend
+   npm install
+
+   # Instalasi dependensi frontend
+   cd ..
+   npm install
+   ```
 
 ## Menjalankan Aplikasi
-- **Backend:** Jalankan server backend dari direktori `./backend/`: `npm start`
-- **Frontend:** Jalankan development server frontend dari direktori root: `npm run dev`
+
+- **Pengembangan Backend**
+  ```bash
+  cd backend
+  npm run dev  # Mode pengembangan dengan hot reload
+  # atau
+  npm start    # Build produksi
+  ```
+
+- **Pengembangan Frontend**
+  ```bash
+  npm run dev
+  ```
 
 ## Endpoint API
 
-### Autentikasi
+Semua rute diawali dengan `/api`
 
-- **POST** `/api/users/register`: Mendaftar pengguna baru (memerlukan autentikasi admin).
-- **POST** `/api/users/login`: Login pengguna. Membutuhkan email dan password dalam body request. Mengembalikan JWT jika berhasil.
+### Autentikasi
+- `POST /api/users/register` - Mendaftarkan pengguna baru (memerlukan autentikasi admin)
+- `POST /api/users/login` - Login pengguna (mengembalikan JWT)
 
 ### Tiket
+- `GET /api/tickets` - Mendapatkan semua tiket (memerlukan autentikasi)
+   - Admin: dapat melihat semua tiket
+   - Klien: hanya dapat melihat tiket miliknya
+- `GET /api/tickets/:id` - Mendapatkan detail tiket tertentu (memerlukan autentikasi)
+- `POST /api/tickets` - Membuat tiket baru (memerlukan autentikasi)
+- `PUT /api/tickets/:id` - Memperbarui tiket (memerlukan autentikasi)
+- `POST /api/tickets/:id/response` - Menambahkan respons admin (memerlukan autentikasi admin)
+- `DELETE /api/tickets/:id` - Menghapus tiket (memerlukan autentikasi admin)
 
-- **GET** `/api/tickets`: Mendapatkan semua tiket (autentikasi diperlukan). Respons bervariasi berdasarkan peran pengguna (admin melihat semua, client hanya melihat tiketnya sendiri).
-- **GET** `/api/tickets/:id`: Mendapatkan tiket spesifik (autentikasi diperlukan).
-- **POST** `/api/tickets`: Membuat tiket baru (autentikasi diperlukan).
-- **PUT** `/api/tickets/:id`: Memperbarui tiket (autentikasi diperlukan, admin dapat memperbarui semua, client hanya tiketnya sendiri).
-- **POST** `/api/tickets/:id/response`: Menambahkan respons admin ke tiket (autentikasi dan peran admin diperlukan).
-- **DELETE** `/api/tickets/:id`: Menghapus tiket (autentikasi dan peran admin diperlukan).
-
-**Catatan:** Pastikan untuk membuat pengguna admin awal secara manual di database PostgreSQL sebelum menjalankan aplikasi.
+## Catatan Penting
+Buat user admin awal secara manual di database PostgreSQL sebelum menjalankan aplikasi.
