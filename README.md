@@ -74,17 +74,16 @@ Sistem tiket full-stack yang memungkinkan pengguna untuk mengajukan tiket dukung
 │   │   └── ui/
 │   │       └── Toaster.tsx
 │   ├── index.css
-│   └── vite-env.d.ts
-├── konfigurasi/
-│   ├── .gitignore
-│   ├── index.html
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── tailwind.config.js
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   ├── tsconfig.node.json
-│   └── vite.config.ts
+│   └── vite-env.d.ts 
+├── .gitignore
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ## Prasyarat
